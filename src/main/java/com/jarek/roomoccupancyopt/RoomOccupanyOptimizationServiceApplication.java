@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RoomOccupanyOptimizationServiceApplication {
+public class RoomOccupancyOptimizationServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RoomOccupanyOptimizationServiceApplication.class, args);
+		SpringApplication.run(RoomOccupancyOptimizationServiceApplication.class, args);
 	}
 
 }

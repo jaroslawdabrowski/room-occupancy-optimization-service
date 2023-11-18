@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jarek</groupId>
-	<artifactId>room-occupany-optimization-service</artifactId>
+	<artifactId>room-occupancy-optimization-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>room-occupany-optimization-service</name>
-	<description>room-occupany-optimization-service</description>
+	<name>room-occupancy-optimization-service</name>
+	<description>room-occupancy-optimization-service</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
