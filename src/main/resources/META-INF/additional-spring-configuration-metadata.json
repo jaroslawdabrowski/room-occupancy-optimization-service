@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "hotel.premium.threshold",
+      "type": "java.lang.String",
+      "description": "Threshold in EUR from which we only offer premium rooms."
+  }
+] }
