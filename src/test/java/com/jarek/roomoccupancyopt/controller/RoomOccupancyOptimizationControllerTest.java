@@ -53,7 +53,10 @@ class RoomOccupancyOptimizationControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.economy.occupied").value(response.getEconomy().getOccupied()))
                 .andExpect(jsonPath("$.economy.free").value(response.getEconomy().getFree()))
-                .andExpect(jsonPath("$.economy.totalIncome").value(response.getEconomy().getTotalIncome()));
+                .andExpect(jsonPath("$.economy.totalIncome").value(response.getEconomy().getTotalIncome()))
+                .andExpect(jsonPath("$.premium.occupied").value(response.getPremium().getOccupied()))
+                .andExpect(jsonPath("$.premium.free").value(response.getPremium().getFree()))
+                .andExpect(jsonPath("$.premium.totalIncome").value(response.getPremium().getTotalIncome()));
     }
 
     @Test
