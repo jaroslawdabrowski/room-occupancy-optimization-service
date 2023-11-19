@@ -1,27 +1,36 @@
 # Room Occupancy Optimization Service
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### How to run
+Build
+>mvn clean install
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.1.5/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.1.5/maven-plugin/reference/html/#build-image)
-* [Validation](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#io.validation)
-* [Liquibase Migration](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#howto.data-initialization.migration-tool.liquibase)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#data.sql.jpa-and-spring-data)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#using.devtools)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#web)
-* [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#actuator)
-* [Spring HATEOAS](https://docs.spring.io/spring-boot/docs/3.1.5/reference/htmlsingle/index.html#web.spring-hateoas)
+and Run
+>java -jar target/room-occupancy-optimization-service-0.0.1-SNAPSHOT.jar
 
-### Guides
-The following guides illustrate how to use some features concretely:
+Requires java 17
 
-* [Validation](https://spring.io/guides/gs/validating-form-input/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
-* [Building a Hypermedia-Driven RESTful Web Service](https://spring.io/guides/gs/rest-hateoas/)
+### How to run tests
+>mvn clean test
 
+### Solution description
+- Solution is running using Spring Boot. 
+- H2 in memory database has been used as a storage of guests data. 
+- No data is being loaded while running the app.
+- Test data will load while running the e2e tests: [RoomOccupancyOptimizationServiceApplicationTests.java](src%2Ftest%2Fjava%2Fcom%2Fjarek%2Froomoccupancyopt%2FRoomOccupancyOptimizationServiceApplicationTests.java)
+- Persistence layer is utilizing Spring Data JPA,
+- Validation API has been introduced to avoid input of invalid data,
+- Liquibase is responsible for DB migration,
+- Rest API has been exposed and documented using Open API specification,
+- Lombok allows to reduce amount of boilerplate code,
+- Hexagonal architecture has been used as a way to define things like: model, structure, communication between components,
+- There is some over-architecting which is not required for such a simple service, but the goal was to show my approach of working on a bigger projects,
+- Some of the parts of the system does not follow hexagonal architecture in 100% as it could be an overkill,
+
+### TODO
+- Store calculation response in DB, so that it can be read afterward,
+- Use real database in production code,
+- Add API for adding guests,
+- Use HATEOS,
+- Do not test all possible business cases in [RoomOccupancyOptimizationServiceApplicationTests.java](src%2Ftest%2Fjava%2Fcom%2Fjarek%2Froomoccupancyopt%2FRoomOccupancyOptimizationServiceApplicationTests.java) as it has been already covered in [RoomOccupancyCalculationServiceTest.java](src%2Ftest%2Fjava%2Fcom%2Fjarek%2Froomoccupancyopt%2Fbusiness%2FRoomOccupancyCalculationServiceTest.java),
+- Add security,
+- Dockerize,
