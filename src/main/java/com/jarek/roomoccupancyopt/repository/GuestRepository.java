@@ -5,5 +5,5 @@ import com.jarek.roomoccupancyopt.model.Guest;
 import java.util.List;
 
 public interface GuestRepository {
-    List<Guest> findAllGuests();
+    List<Guest> findAll();
 }

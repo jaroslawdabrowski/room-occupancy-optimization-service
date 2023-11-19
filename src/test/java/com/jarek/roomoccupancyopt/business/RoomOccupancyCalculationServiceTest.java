@@ -37,7 +37,7 @@ class RoomOccupancyCalculationServiceTest {
           new Guest("09", 115),
           new Guest("10", 209)
         );
-        when(guestRepository.findAllGuests()).thenReturn(guests);
+        when(guestRepository.findAll()).thenReturn(guests);
 
         service = new RoomOccupancyCalculationService(100, guestRepository);
     }

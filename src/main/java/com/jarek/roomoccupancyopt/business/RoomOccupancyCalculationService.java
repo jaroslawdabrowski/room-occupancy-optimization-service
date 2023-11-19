@@ -5,31 +5,31 @@ import com.jarek.roomoccupancyopt.model.HotelAvailability;
 import com.jarek.roomoccupancyopt.model.RoomOccupancyCalculation;
 import com.jarek.roomoccupancyopt.model.RoomTypeUsage;
 import com.jarek.roomoccupancyopt.repository.GuestRepository;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
+
 @Service
 public class RoomOccupancyCalculationService {
     private final int hotelPremiumThreshold;
 
     private final GuestRepository guestRepository;
 
-    @Autowired
     public RoomOccupancyCalculationService(@Value("${hotel.premium.threshold}") int hotelPremiumThreshold,
                                            GuestRepository guestRepository) {
         this.hotelPremiumThreshold = hotelPremiumThreshold;
         this.guestRepository = guestRepository;
     }
 
-    public RoomOccupancyCalculation calculate(@NotNull HotelAvailability hotelAvailability) {
+    public RoomOccupancyCalculation calculate(@Valid @NotNull HotelAvailability hotelAvailability) {
         var premiumRoomUsage = new RoomTypeUsage(hotelAvailability.premiumRooms());
         var economyRoomUsage = new RoomTypeUsage(hotelAvailability.economyRooms());
 
-        var allGuests = guestRepository.findAllGuests();
+        var allGuests = guestRepository.findAll();
 
         var highBudgetGuests = new PriorityQueue<>(Comparator.comparing(Guest::budget).reversed());
         allGuests.stream().filter(g -> g.budget() >= hotelPremiumThreshold).forEach(highBudgetGuests::offer);

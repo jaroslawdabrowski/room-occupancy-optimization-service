@@ -1,6 +1,7 @@
 package com.jarek.roomoccupancyopt.model;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
-public record RoomOccupancyCalculation(@NotNull RoomTypeUsage premium, @NotNull RoomTypeUsage economy) {
+public record RoomOccupancyCalculation(@Valid @NotNull RoomTypeUsage premium, @Valid @NotNull RoomTypeUsage economy) {
 }
